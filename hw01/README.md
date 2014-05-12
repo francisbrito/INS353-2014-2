@@ -24,7 +24,7 @@ end
 And here's the 50% of the ```calculator_spec.rb```:
 
 ```
-require 'spec_Helper'
+require 'spec_helper'
 
 class Calculator
   def add num_one, num_two
