@@ -39,7 +39,9 @@ describe Calculator do
         #       expect(function() { obj.funcThatThrows(); }).toThrow();
         #       ```
         #       in Mocha/Jasmine.
-        expect { calc.add 'invalid', 'params' }.to raise_error(ArgumentError)
+        expect { calc.add 'chunky bacon', 2 }.to raise_error ArgumentError, "Invalid argument 'chunky bacon'."
+        expect { calc.add 2, 'pet ham' }.to raise_error ArgumentError, "Invalid argument 'pet ham'."
+        expect { calc.add 'one two', 'one two three four five' }.to raise_error ArgumentError
       end
     end
   end
