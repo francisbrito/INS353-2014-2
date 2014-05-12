@@ -10,7 +10,8 @@ class Calculator
   end
 
   def mult num_one, num_two
-    raise ArgumentError.new "Invalid argument '#{num_one}'." if not num_one.is_a? Numeric or not num_two.is_a? Numeric
+    raise ArgumentError.new "Invalid argument '#{num_one}'." if not num_one.is_a? Numeric
+    raise ArgumentError.new "Invalid argument '#{num_two}'." if not num_two.is_a? Numeric
 
     num_one * num_two
   end
@@ -60,7 +61,10 @@ describe Calculator do
         it "should throw an error" do
             calc = Calculator.new
 
-            expect { calc.mult 'invalid', 'params' }.to raise_error(ArgumentError)
+            # We can't handle that many anyway.
+            expect { calc.mult 'Angie', 2 }.to raise_error ArgumentError, "Invalid argument 'Angie'."
+            expect { calc.mult 4, 'eyes' }.to raise_error ArgumentError, "Invalid argument 'eyes'."
+            expect { calc.mult 'chocolate', 'brownies' }.to raise_error ArgumentError
         end
     end
   end
