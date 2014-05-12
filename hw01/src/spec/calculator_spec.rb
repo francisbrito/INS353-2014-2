@@ -1,12 +1,17 @@
 require 'spec_helper'
 
 class Calculator
-  def add num_one, num_two
+  def add *operands
     # `obj.is_a? Numeric` returns `true` for both Integer and Float.
-    raise ArgumentError.new "Invalid argument '#{num_one}'." if not num_one.is_a? Numeric
-    raise ArgumentError.new "Invalid argument '#{num_two}'." if not num_two.is_a? Numeric
+    sum = 0
 
-    num_one + num_two
+    for op in operands do
+        raise ArgumentError.new "Invalid argument '#{op}'." if not op.is_a? Numeric
+
+        sum += op
+    end
+
+    sum
   end
 
   def mult num_one, num_two
@@ -21,10 +26,15 @@ describe Calculator do
 
   describe "#add" do
     context "with correct params" do
-      it "should add two numbers" do
-        calc = Calculator.new
-        expect(calc.add(1,3)).to eql(4)
-      end
+        it "should add an arbitrary number of parameters" do
+            calc = Calculator.new
+
+            expect( calc.add 1, 2 ).to eql 3
+            expect( calc.add 1, 2, 3 ).to eql 6
+            expect( calc.add 1, 2, 3, 4 ).to eql 10
+            expect( calc.add -1, 2 ).to eql 1
+            expect( calc.add 1.5, 2.5 ).to eql 4.0
+        end
     end
 
     context "with incorrect params" do
