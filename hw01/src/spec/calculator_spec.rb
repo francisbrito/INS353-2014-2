@@ -3,7 +3,8 @@ require 'spec_helper'
 class Calculator
   def add num_one, num_two
     # `obj.is_a? Numeric` returns `true` for both Integer and Float.
-    raise ArgumentError.new "Invalid argument '#{num_one}'." if not num_one.is_a? Numeric or not num_two.is_a? Numeric
+    raise ArgumentError.new "Invalid argument '#{num_one}'." if not num_one.is_a? Numeric
+    raise ArgumentError.new "Invalid argument '#{num_two}'." if not num_two.is_a? Numeric
 
     num_one + num_two
   end
