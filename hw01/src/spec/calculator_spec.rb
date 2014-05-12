@@ -7,6 +7,12 @@ class Calculator
 
     num_one + num_two
   end
+
+  def mult num_one, num_two
+    raise ArgumentError.new "Invalid argument '#{num_one}'." if not num_one.is_a? Numeric or not num_two.is_a? Numeric
+
+    num_one * num_two
+  end
 end
 
 describe Calculator do
@@ -39,6 +45,20 @@ describe Calculator do
   end
 
   describe "#mult" do
-    it "should multiply two numbers"
+    context "with correct params" do
+        it "should multiply two numbers" do
+            calc = Calculator.new
+
+            expect(calc.mult 2, 2).to eql 4
+            expect(calc.mult -1, 2).to eql -2
+        end
+    end
+    context "with incorrect params" do
+        it "should throw an error" do
+            calc = Calculator.new
+
+            expect { calc.mult 'invalid', 'params' }.to raise_error(ArgumentError)
+        end
+    end
   end
 end
