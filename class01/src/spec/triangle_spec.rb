@@ -1,20 +1,19 @@
 require 'spec_helper'
 
-# •equilateral
-# •isosceles
-# •scalene
-
 class Triangle
 end
 
 describe Triangle do
-  describe '#isosceles' do
-    it 'should return true if two of the sides are equal'
-  end
-  describe '#equilateral' do
-    it 'should return true if all of the sides are equal'
-  end
-  describe '#scalene' do
-    it 'should return true if all of the sides are different'
+  describe '#kind' do
+    context 'with valid sides' do
+      it 'should return `equilateral` if all sides are equal.'
+      it 'should return `isosceles` if two sides are equal.'
+      it 'should return `scalene` if all sides are different.'
+    end
+    context 'with invalid sides' do
+      it 'should throw `ViolatesTriangleInequalityError` if a third size is greater than the sum of the first two.'
+      it 'should throw `ImpossibleSideLengthError` if any of the sides is zero or negative.'
+      it 'should throw `InvalidTypeError` if any of the of sides is not a number.'
+    end
   end
 end
