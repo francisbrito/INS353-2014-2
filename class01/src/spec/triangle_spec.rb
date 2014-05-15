@@ -6,7 +6,7 @@ end
 class ImpossibleLengthError < TypeError
 end
 
-class InvalidTypeEror < TypeError
+class InvalidTypeErtor < TypeError
 end
 
 class Triangle
