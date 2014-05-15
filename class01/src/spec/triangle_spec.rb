@@ -10,6 +10,43 @@ class InvalidTypeEror < TypeError
 end
 
 class Triangle
+  attr_reader :a, :b, :c
+  
+  def initialize(a, b, c)
+    @a = a
+    @b = b
+    @c = c
+  end
+  
+  def kind
+    
+  end
+
+  private
+
+  def sides
+    @sides ||= [@a, @b, @c]
+  end
+
+  def equilateral?
+    value = @a
+    sides.any? { |side| side == value }
+  end
+
+  def isosceles?
+    (@a == @b and @a != @c) or (@c == @a and @c != @b)
+  end
+
+  def illegal?
+    sides.any? { |side| !side.is_a? Numeric }
+  end
+
+  def violates_inequality?
+  end
+
+  def impossible_length_side?
+    sides.any? { |side| side <= 0 }
+  end
 end
 
 describe Triangle do
