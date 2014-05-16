@@ -10,7 +10,11 @@ class Triangle
     end
 
     def kind
-        :equilateral if equilateral?
+        if equilateral?
+            :equilateral
+        elsif isosceles?
+            :isosceles
+        end
     end
 
     private
@@ -25,6 +29,7 @@ class Triangle
     end
 
     def isosceles?
+        (@a == @b and @a != @c) or (@b == @c and @b != @a) or (@c == @a and @c != @b)
     end
 
     def illegal?
