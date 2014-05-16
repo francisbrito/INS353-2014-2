@@ -10,6 +10,8 @@ class Triangle
     end
 
     def kind
+        raise TriangleError if illegal?
+
         if equilateral?
             :equilateral
         elsif isosceles?
@@ -35,6 +37,7 @@ class Triangle
     end
 
     def illegal?
+        sides.any? {|side| !side.is_a? Numeric}
     end
 
     def violates_inequality?
