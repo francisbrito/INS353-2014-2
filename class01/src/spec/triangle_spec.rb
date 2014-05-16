@@ -51,10 +51,10 @@ describe Triangle do
             it 'should throw `TriangleError` if any side is negative or zero.' do
                 # NOTE: For some reason `Triangle.new -1, -1, -1` raise a warning.
                 pessimist_triangle = Triangle.new(-1, -1, -1)
-                expect {triangle.kind}.to raise_error TriangleError
+                expect {pessimist_triangle.kind}.to raise_error TriangleError
 
                 neutral_triangle = Triangle.new 0, 0, 0
-                expect {triangle.kind}.to raise_error TriangleError
+                expect {neutral_triangle.kind}.to raise_error TriangleError
             end
         end
     end
