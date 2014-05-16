@@ -10,14 +10,18 @@ class Triangle
     end
 
     def kind
+        :equilateral if equilateral?
     end
 
     private
 
     def sides
+        @sides ||= [@a, @b, @c]
     end
 
     def equilateral?
+        comparee_side = @a
+        sides.all? {|side| side == comparee_side}
     end
 
     def isosceles?
