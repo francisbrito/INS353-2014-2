@@ -10,7 +10,7 @@ class Triangle
     end
 
     def kind
-        raise TriangleError if illegal?
+        raise TriangleError if illegal? or violates_inequality?
 
         if equilateral?
             :equilateral
@@ -41,6 +41,7 @@ class Triangle
     end
 
     def violates_inequality?
+        @a + @b < @c or @a + @c < @b or @c + @b < @a
     end
 
     def impossible_length_side?
