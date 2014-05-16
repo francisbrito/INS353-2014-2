@@ -23,6 +23,9 @@ class Triangle
     def isosceles?
     end
 
+    def scalene?
+    end
+
     def illegal?
     end
 
