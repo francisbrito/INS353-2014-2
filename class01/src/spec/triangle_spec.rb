@@ -14,6 +14,8 @@ class Triangle
             :equilateral
         elsif isosceles?
             :isosceles
+        else
+            :scalene
         end
     end
 
