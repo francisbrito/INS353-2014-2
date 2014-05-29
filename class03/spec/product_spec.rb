@@ -7,7 +7,13 @@ describe Product do
 
 	describe "When creating a new a product" do
 		context "With valid parameters" do
-			it "should take 3 parameters and return a product object"
+			it "should take 3 parameters and return a product object" do
+				expect { p = Product.new 'Banan' }.to raise_error
+				expect { p = Product.new 'Banana', 5.0 }.to raise_error
+
+                		p = Product.new('Banana', 5.0, :fruits_n_veggies)
+                		p.should_not be_nil 
+            		end
 		end
 	end
 
