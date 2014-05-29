@@ -50,11 +50,19 @@ describe Product do
 	end
 
 	describe "#category" do
-		it "should return the correct category"
+		it "should return the correct category" do
 			# the category of the object created in the each block is asserted.
+			p = Product.new 'Banana', 5.0, :fruits_n_veggies
+		
+			expect(p.category).to eql :frunts_n_veggies
+		end
 
-		it "should be a symbol"
+		it "should be a symbol" do
 			# the category should be of the class Symbol
+			p = Product.new 'Banana', 5.0, :fruits_n_veggies
+
+			expect(p.category.kind_of? Symbol).to eql true
+		end
 	end
 
 end
