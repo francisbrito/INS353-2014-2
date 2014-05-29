@@ -34,11 +34,19 @@ describe Product do
 	end
 
 	describe "#price" do
-		it "should return the correct price"
+		it "should return the correct price" do
 			# the price of the object created in the each block is asserted.
+			p = Product.new 'Banana', 5.0, :fruits_n_veggies
 
-		it "should be a float"
+			expect(p.price).to eql 5.0
+		end
+
+		it "should be a float" do
 			# the price should be of the class Float
+			p = Product.new 'Banana', 5.0, :fruits_n_veggies
+
+			expect(p.price.kind_of? Float).to eql true
+		end
 	end
 
 	describe "#category" do
