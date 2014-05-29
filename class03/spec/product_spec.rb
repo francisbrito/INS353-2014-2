@@ -54,7 +54,7 @@ describe Product do
 			# the category of the object created in the each block is asserted.
 			p = Product.new 'Banana', 5.0, :fruits_n_veggies
 		
-			expect(p.category).to eql :frunts_n_veggies
+			expect(p.category).to eql :fruits_n_veggies
 		end
 
 		it "should be a symbol" do

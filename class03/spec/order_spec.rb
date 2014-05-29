@@ -3,17 +3,17 @@ require 'spec_helper.rb'
 describe Order do
 	
 	before :all do
-		# orders = [
-		# 	Product.new("Mouse", 21.00, :electronics),
-		# 	Product.new("Keyboard", 25.00, :electronics),
-		# 	Product.new("Bed", 111.00, :home),
-		# 	Product.new("Pen", 1.50, :office),
-		# 	Product.new("Key", 4.20, :home),
-		# 	Product.new("Printer", 121.00, :electronics)
-		# ]
-		# File.open "products.yml", 'w' do |f|
-		# 	f.write YAML::dump orders
-		# end
+		orders = [
+			Product.new("Mouse", 21.00, :electronics),
+			Product.new("Keyboard", 25.00, :electronics),
+			Product.new("Bed", 111.00, :home),
+			Product.new("Pen", 1.50, :office),
+			Product.new("Key", 4.20, :home),
+			Product.new("Printer", 121.00, :electronics)
+		]
+		File.open "products.yml", 'w' do |f|
+			f.write YAML::dump orders
+		end
 	end
 
 	before :each do
