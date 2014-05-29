@@ -18,8 +18,12 @@ describe Product do
 	end
 
 	describe "#title" do
-		it "should return the correct title"
+		it "should return the correct title" do
 			# the name of the object created in the each block is asserted.
+			p = Product.new 'Banana', 5.0, :fruits_n_veggies
+
+			expect(p.title).to eql 'Banana'
+		end
 
 		it "should be a string"
 			# the name should be of the class String
