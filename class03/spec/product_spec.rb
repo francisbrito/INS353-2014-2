@@ -25,8 +25,12 @@ describe Product do
 			expect(p.title).to eql 'Banana'
 		end
 
-		it "should be a string"
+		it "should be a string" do
 			# the name should be of the class String
+			p = Product.new 'Banana', 5.0, :fruits_n_veggies
+
+			expect(p.title.kind_of? String).to eql(true)
+		end
 	end
 
 	describe "#price" do
