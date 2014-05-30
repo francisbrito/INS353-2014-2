@@ -10,6 +10,9 @@ class Order
         products.select {|p| p.category == category}
     end
     def add_product(new_product)
+        products.push new_product
+        # NOTE: Yes, something's wrong. I can feel it too...
+        products.last
     end
 end
 
