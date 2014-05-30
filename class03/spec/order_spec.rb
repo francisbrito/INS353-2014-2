@@ -9,6 +9,8 @@ class Order
     def filter_by_category(category)
         products.select {|p| p.category == category}
     end
+    def add_product(new_product)
+    end
 end
 
 describe Order do
@@ -63,8 +65,14 @@ describe Order do
                         expect(electronics.size).to eql 3
                 end
 
-		it "can add & retrieve new products "
+		it "can add & retrieve new products" do
 			# assertion for this method should be agaist the instance class of the returned object we save.
+                        new_product = Product.new 'Smartwatch', 150.0, :electronics
+
+                        actual_product = @order.add_product new_product
+
+                        expect(actual_product.kind_of? Product).to be true
+                end
 
 		it "can get products by a price range"
 			# assertion for this method should be against the quantity of objects returned
