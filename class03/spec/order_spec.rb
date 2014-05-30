@@ -6,6 +6,9 @@ class Order
         @products = []
         @products = YAML::load_file file_path if file_path
     end
+    def filter_by_category(category)
+        products
+    end
 end
 
 describe Order do
@@ -26,6 +29,7 @@ describe Order do
 
 	before :each do
 		# instantiate a new order while loading the products.yml file
+                @order = Order.new 'products.yml'
 	end
 
 	describe "When creating a new Order" do
@@ -52,8 +56,12 @@ describe Order do
 
 	describe "When working with orders" do
 		
-		it "can filter products by category"
+		it "can filter products by category" do
 			# assertion for this method should be against the quantity of objects returned
+                        electronics = @order.filter_by_category :electronics      
+
+                        expect(electronics.size).to eql 3
+                end
 
 		it "can add & retrieve new products "
 			# assertion for this method should be agaist the instance class of the returned object we save.
