@@ -7,7 +7,7 @@ class Order
         @products = YAML::load_file file_path if file_path
     end
     def filter_by_category(category)
-        products
+        products.select {|p| p.category == category}
     end
 end
 
