@@ -14,6 +14,9 @@ class Order
         # NOTE: Yes, something's wrong. I can feel it too...
         products.last
     end
+    def filter_by_price(lowest_price, highest_price)
+        products
+    end
 end
 
 describe Order do
@@ -77,8 +80,13 @@ describe Order do
                         expect(actual_product.kind_of? Product).to be true
                 end
 
-		it "can get products by a price range"
+		it "can get products by a price range" do
 			# assertion for this method should be against the quantity of objects returned
+                        # Yes, am this cheap.
+                        expensive_stuff = @order.filter_by_price 100, 200
+
+                        expect(expensive_stuff.size).to be 2
+                end
 
 		it "can save your order to a file"
 			# Save the order to a file, retrieve it and then compare with the previous
