@@ -1,5 +1,9 @@
 require 'spec_helper.rb'
 
+class Order
+    attr_reader :products
+end
+
 describe Order do
 	
 	before :all do
@@ -23,8 +27,12 @@ describe Order do
 	describe "When creating a new Order" do
 
 		context "with no parameters" do
-			it "has no products"
+			it "has no products" do
 				# A new order instantiated with no yml file should have 0 products
+                                o = Order.new 
+
+                                expect(o.products.size).to eql 0
+                        end
 		end
 
 		context "with a YAML file" do
