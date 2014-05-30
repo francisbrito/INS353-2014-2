@@ -18,6 +18,12 @@ class Order
         products.select {|p| lowest_price <= p.price and p.price <= highest_price}
     end
     def save(path)
+        File::open path, 'w' do |f|
+            YAML::dump self, f
+        end
+    end
+    def ==(comparee)
+        self.products.to_s == comparee.products.to_s
     end
 end
 
@@ -98,7 +104,7 @@ describe Order do
 
                         saved_order = YAML::load_file path
 
-                        expect(@order).to eql saved_order
+                        expect(@order == saved_order).to be true
                 end
 	end
 	

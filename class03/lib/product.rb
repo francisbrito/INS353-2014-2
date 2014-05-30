@@ -8,6 +8,9 @@ class Product
 		@price = price
 		@category = category
 	end
+        def to_s
+            title + ' ' + price.to_s + ' ' + category.to_s 
+        end
 	# attribute names should be title, price, category
 	# where title is a String
 	# where price is a Float
