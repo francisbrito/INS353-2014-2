@@ -1,30 +1,26 @@
 class Order
-	attr_accessor :products
-
-	# Remember that working with YAML files YAML::load and YAML::dump are your friends!
-
-	def initialize
-	  	# loading or not loading should be the key here.
+    attr_reader :products
+    def initialize(file_path = nil)
+        @products = []
+        @products = YAML::load_file file_path if file_path
     end
- 
-    def filter_by_category
-    	# Perhaps you could use the select method for arrays :)
+    def filter_by_category(category)
+        products.select {|p| p.category == category}
     end
-
-    def filter_by_price
-    	# Perhaps the select method could work here too!
+    def add_product(new_product)
+        products.push new_product
+        # NOTE: Yes, something's wrong. I can feel it too...
+        products.last
     end
- 
-    def add_product
-      # Remember stacks & queues? Pushing might be the answer.
+    def filter_by_price(lowest_price, highest_price)
+        products.select {|p| lowest_price <= p.price and p.price <= highest_price}
     end
- 
-    def get_product
-    	# you query products by a product title but the catchy thing here is
-    	# that if there are multiple matches only the first one is returned.
+    def save(path)
+        File::open path, 'w' do |f|
+            YAML::dump self, f
+        end
     end
- 
-    def save
-    	# maybe you could try dumping around here :)
+    def ==(comparee)
+        self.products.to_s == comparee.products.to_s
     end
 end
