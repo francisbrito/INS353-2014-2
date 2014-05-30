@@ -4,6 +4,7 @@ class Order
     attr_reader :products
     def initialize(file_path = nil)
         @products = []
+        @products = YAML::load_file file_path if file_path
     end
 end
 
