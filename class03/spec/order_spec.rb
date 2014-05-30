@@ -17,6 +17,8 @@ class Order
     def filter_by_price(lowest_price, highest_price)
         products.select {|p| lowest_price <= p.price and p.price <= highest_price}
     end
+    def save(path)
+    end
 end
 
 describe Order do
@@ -88,8 +90,16 @@ describe Order do
                         expect(expensive_stuff.size).to be 2
                 end
 
-		it "can save your order to a file"
+		it "can save your order to a file" do
 			# Save the order to a file, retrieve it and then compare with the previous
+                        path = 'test-order.yml'
+
+                        @order.save path
+
+                        saved_order = YAML::load_file path
+
+                        expect(@order).to eql saved_order
+                end
 	end
 	
 
