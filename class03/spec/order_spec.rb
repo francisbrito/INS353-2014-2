@@ -15,7 +15,7 @@ class Order
         products.last
     end
     def filter_by_price(lowest_price, highest_price)
-        products
+        products.select {|p| lowest_price <= p.price and p.price <= highest_price}
     end
 end
 
