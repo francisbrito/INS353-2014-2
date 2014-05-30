@@ -2,6 +2,9 @@ require 'spec_helper.rb'
 
 class Order
     attr_reader :products
+    def initialize
+        @products = []
+    end
 end
 
 describe Order do
