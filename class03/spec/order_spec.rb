@@ -2,7 +2,7 @@ require 'spec_helper.rb'
 
 class Order
     attr_reader :products
-    def initialize
+    def initialize(file_path = nil)
         @products = []
     end
 end
@@ -32,15 +32,19 @@ describe Order do
 		context "with no parameters" do
 			it "has no products" do
 				# A new order instantiated with no yml file should have 0 products
-                                o = Order.new 
+                                o = Order.new
 
                                 expect(o.products.size).to eql 0
                         end
 		end
 
 		context "with a YAML file" do
-			it "has 6 products"
+			it "has 6 products" do
 				# A new order instantiated with a yml file should have 6 products
+                                o = Order.new 'products.yml'                        
+
+                                expect(o.products.size).to eql 6
+                        end
 		end
 
 	end
