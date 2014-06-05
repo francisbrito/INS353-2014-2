@@ -27,6 +27,9 @@ class Post
 end
 
 describe Post do
+  before :each do
+      @angie = User.new 'angie'
+  end
   describe "#initialize" do
 
     context "with a yaml file" do
@@ -41,7 +44,15 @@ describe Post do
     end
 
     context "with proper attributes" do
-      it "should properly initialize a post instance"
+      it "should properly initialize a post instance" do
+          p = Post.new 'foo', 'bar baz', Time.new(2011, 10, 20), @angie
+
+          expect(p).not_to be_nil
+          expect(p.title).to eql 'foo'
+          expect(p.text).to eql 'bar baz'
+          expect(p.date).to eql Time.new(2011, 10, 20)
+          expect(p.user).to eql @angie
+      end
     end
 
   end
