@@ -1,10 +1,23 @@
 require 'spec_helper'
 
+class Post
+    attr_accessor :title, :text, :date, :user
+    def initialize(title, text = nil, date = nil, user = nil)
+    end
+end
+
 describe Post do
   describe "#initialize" do
 
     context "with a yaml file" do
-      it "should properly load a post from a yaml file"
+      it "should properly load a post from a yaml file" do
+          p = Post.new 'my-post.yml'
+
+          expect(p).not_to be_nil
+          expect(p.title).to eql 'foo'
+          expect(p.text).to eql 'bar baz'
+          expect(p.date).to eql Time.new(2011, 10, 20)
+      end
     end
 
     context "with proper attributes" do
