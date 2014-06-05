@@ -24,6 +24,9 @@ class Post
         @date = date
         @user = user
     end
+    def summary
+        text
+    end
 end
 
 describe Post do
@@ -57,7 +60,11 @@ describe Post do
 
   end
   describe "#summary" do
-    it "should display the first 10 words of text"
+    it "should display the first 10 words of text" do
+        p = Post.new 'foo', 'bar baz chunky bacon some cat chopper knife makeit ruby js', Time.now, @angie
+
+        expect(p.summary).to eql 'bar baz chunky bacon some cat chopper knife makeit ruby'  
+    end
   end
 
   describe "#tagme" do
