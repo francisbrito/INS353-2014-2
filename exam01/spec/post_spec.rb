@@ -3,6 +3,7 @@ require 'yaml'
 
 class Post
     attr_accessor :title, :text, :date, :user
+    attr_reader :tags
     def initialize(title, text = nil, date = nil, user = nil)
         file_path = nil
         if title and !text and !date and !user
@@ -23,16 +24,21 @@ class Post
         @text = text
         @date = date
         @user = user
+        @tags = []
     end
     def summary
         # NOTE: Poor man's truncate_words
         text.split(' ').first(10).join ' '
+    end
+    def tagme(tag)
+        tags.push tag
     end
 end
 
 describe Post do
   before :each do
       @angie = User.new 'angie'
+      @post = Post.new 'foo', 'bar baz chunky bacon some cat chopper knife makeit ruby js', Time.now, @angie
   end
   describe "#initialize" do
 
@@ -73,7 +79,12 @@ describe Post do
   end
 
   describe "#tagme" do
-    it "should be able to tag with 1 tag"
+    it "should be able to tag with 1 tag" do
+        @post.tagme :junk
+
+        expect(@post.tags.size).to eql 1
+        expect(@post.tags).to include :junk
+    end
     it "should be able to tag with 4 tags"
   end
 
