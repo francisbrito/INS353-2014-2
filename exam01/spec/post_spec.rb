@@ -36,13 +36,15 @@ class Post
         new_tags.each {|t| tags.push t}
     end
     def same?(other)
+        # Yes, am in a hurry.
+        other.title == self.title and other.text == self.text and other.date == self.date
     end
 end
 
 describe Post do
   before :each do
       @angie = User.new 'angie'
-      @post = Post.new 'foo', 'bar baz chunky bacon some cat chopper knife makeit ruby js', Time.now, @angie
+      @post = Post.new 'foo', 'bar baz chunky bacon some cat chopper knife makeit ruby js', Time.new(2011, 10, 20), @angie
   end
   describe "#initialize" do
 
@@ -99,7 +101,7 @@ describe Post do
 
   describe "#same?" do
     it "should return true if Title, Date and Text are the same" do
-        other = Post.new 'foo', 'bar baz chunky bacon some cat chopper knife makeit ruby js', Time.now, @angie 
+        other = Post.new 'foo', 'bar baz chunky bacon some cat chopper knife makeit ruby js', Time.new(2011, 10, 20), @angie
 
         expect(@post.same? other).to eql true 
     end
