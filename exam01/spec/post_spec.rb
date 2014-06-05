@@ -40,7 +40,20 @@ class Post
         other.title == self.title and other.text == self.text and other.date == self.date
     end
     def display_entry
-        title
+        msg = "%s, %d-%d-%d\n%s\n%s\nTags: " % [user.username, date.year, date.month, date.day, title, text]
+
+        tags.each{|t| msg << t}
+
+        # Return for easier testing.
+        msg
+    end
+    def save
+        # NOTE: Poor man's slugify
+        file_path = title.split(' ').join('-') << '.yml'
+
+        File::open file_path, 'w' do |f|
+            f.write YAML::dump(self)
+        end
     end
 end
 
@@ -117,12 +130,12 @@ describe Post do
 
   describe "#display_entry" do
     it "should properly output a post entry" do
-        expected = """angie, 2011-10-20 
+        expected = """angie, 2011-10-20
 foo
 bar baz chunky bacon some cat chopper knife makeit ruby js
 Tags: :junk, :randomness, :things_angie_say
-        """
-        expect{@post.displa_entry}.to eql expected 
+"""
+        expect(@post.display_entry).to eql expected 
     end
   end
 
