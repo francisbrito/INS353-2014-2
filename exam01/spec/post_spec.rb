@@ -35,6 +35,8 @@ class Post
 
         new_tags.each {|t| tags.push t}
     end
+    def same?(other)
+    end
 end
 
 describe Post do
@@ -96,7 +98,11 @@ describe Post do
   end
 
   describe "#same?" do
-    it "should return true if Title, Date and Text are the same"
+    it "should return true if Title, Date and Text are the same" do
+        other = Post.new 'foo', 'bar baz chunky bacon some cat chopper knife makeit ruby js', Time.now, @angie 
+
+        expect(@post.same? other).to eql true 
+    end
     it "should return false if Title, Date and Text are not the same"
   end
 
