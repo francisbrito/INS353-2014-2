@@ -85,7 +85,12 @@ describe Post do
         expect(@post.tags.size).to eql 1
         expect(@post.tags).to include :junk
     end
-    it "should be able to tag with 4 tags"
+    it "should be able to tag with 4 tags" do
+        @post.tagme :junk, :randomness, :wtf, :gotosleep
+
+        expect(@post.tags.size).to eql 4
+        expect(@post.tags).to include :junk, :randomness, :wtf, :gotosleep
+    end
   end
 
   describe "#same?" do
