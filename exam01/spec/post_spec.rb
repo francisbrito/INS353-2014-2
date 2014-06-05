@@ -25,7 +25,8 @@ class Post
         @user = user
     end
     def summary
-        text
+        # NOTE: Poor man's truncate_words
+        text.split(' ').first(10).join ' '
     end
 end
 
@@ -64,6 +65,10 @@ describe Post do
         p = Post.new 'foo', 'bar baz chunky bacon some cat chopper knife makeit ruby js', Time.now, @angie
 
         expect(p.summary).to eql 'bar baz chunky bacon some cat chopper knife makeit ruby'  
+
+        p.title = 'Once upon a time...'
+
+        expect(p.title).to eql 'Once upon a time...'
     end
   end
 
