@@ -30,8 +30,10 @@ class Post
         # NOTE: Poor man's truncate_words
         text.split(' ').first(10).join ' '
     end
-    def tagme(tag)
-        tags.push tag
+    def tagme(*new_tags)
+        # NOTE: `*` before param name is the "splat" operator.
+
+        new_tags.each {|t| tags.push t}
     end
 end
 
@@ -63,8 +65,8 @@ describe Post do
           expect(p.date).to eql Time.new(2011, 10, 20)
           expect(p.user).to eql @angie
       end
-    end
 
+    end
   end
   describe "#summary" do
     it "should display the first 10 words of text" do
