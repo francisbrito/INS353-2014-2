@@ -39,6 +39,9 @@ class Post
         # Yes, am in a hurry.
         other.title == self.title and other.text == self.text and other.date == self.date
     end
+    def display_entry
+        title
+    end
 end
 
 describe Post do
@@ -113,7 +116,14 @@ describe Post do
   end
 
   describe "#display_entry" do
-    it "should properly output a post entry"
+    it "should properly output a post entry" do
+        expected = """angie, 2011-10-20 
+foo
+bar baz chunky bacon some cat chopper knife makeit ruby js
+Tags: :junk, :randomness, :things_angie_say
+        """
+        expect{@post.displa_entry}.to eql expected 
+    end
   end
 
   describe "#save" do
