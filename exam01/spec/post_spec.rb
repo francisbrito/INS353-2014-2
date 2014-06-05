@@ -105,7 +105,11 @@ describe Post do
 
         expect(@post.same? other).to eql true 
     end
-    it "should return false if Title, Date and Text are not the same"
+    it "should return false if Title, Date and Text are not the same" do
+        other = Post.new 'some', 'thing else', Time.now, @angie
+
+        expect(@post.same? other).to eql false
+    end
   end
 
   describe "#display_entry" do
