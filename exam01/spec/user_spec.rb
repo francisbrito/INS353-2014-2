@@ -1,5 +1,28 @@
 require 'spec_helper'
 
+class User
+    attr_reader :posts
+    def initialize(username)
+        @username = username
+        @posts = []
+    end
+    def add_post(date, text, title)
+        posts.push Post.new title, text, date
+    end
+    def posts
+        # NOTE: This should work...
+        @posts.sort{|a, b| return b.date <=> a.date}
+    end
+    def list
+        posts.each{|p| p.display_entry}
+    end
+    def find_post_by_title(title)
+        index = posts.find_index{|p| p.title == title}
+        
+        posts.at(index)
+    end
+end
+
 describe User do
 
   describe "#initialize" do
