@@ -1,8 +1,28 @@
 require 'spec_helper'
+require 'yaml'
 
 class Post
     attr_accessor :title, :text, :date, :user
     def initialize(title, text = nil, date = nil, user = nil)
+        file_path = nil
+        if title and !text and !date and !user
+            # NOTE: Duck-typing a lá JavaScript.
+            file_path = title
+        end
+        if file_path
+            # Load post from a YAML file.
+            p = YAML::load_file file_path
+
+            title = p.title
+            text = p.text
+            date = p.date
+            user = p.user
+        end
+
+        @title = title
+        @text = text
+        @date = date
+        @user = user
     end
 end
 

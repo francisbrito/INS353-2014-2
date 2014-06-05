@@ -1,0 +1,6 @@
+--- !ruby/object:Post
+title: foo
+text: bar baz
+date: 2011-10-20 00:00:00.000000000 -04:00
+user: !ruby/object:User
+  username: angie
