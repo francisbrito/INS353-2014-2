@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  subject_name: MyString
+  score: 1.5
+  subject_id: MyString
+
+two:
+  subject_name: MyString
+  score: 1.5
+  subject_id: MyString
