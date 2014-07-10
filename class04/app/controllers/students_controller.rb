@@ -5,7 +5,7 @@ class StudentsController < ApplicationController
   # GET /students.json
   def index
       # NOTE: Alphanumerical by default.
-      @students = Student.all.sort {|s| s.name}
+      @students = Student.order :name
   end
 
   # GET /students/1
