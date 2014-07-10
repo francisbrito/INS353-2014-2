@@ -1,5 +1,6 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: [:show, :edit, :update, :destroy]
+  accepts_nested_attributes_for :grades
 
   # GET /students
   # GET /students.json
@@ -70,6 +71,6 @@ class StudentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_params
-      params.require(:student).permit(:name, :university_id)
+      params.require(:student).permit(:name, :university_id, :grades)
     end
 end
