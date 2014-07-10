@@ -1,5 +1,6 @@
 class Student < ActiveRecord::Base
     has_many :grades
+    accepts_nested_attributes_for :grades   
 
     def average_grade_score
         if grades.length == 0
