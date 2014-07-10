@@ -19,7 +19,22 @@
     <%= f.label :university_id, 'University ID' %><br>
     <%= f.text_field :university_id %>
   </div>
-  
+  <div class="field_list">
+    <% fields_for :grade, @student.grades do |gf| %>
+        <div class="field">
+          <%= gf.label :subject_name %>
+          <%= gf.text_field :subject_name %>
+        </div> 
+        <div class="field">
+          <%= gf.label :score %>
+          <%= gf.text_field :score %>
+        </div> 
+        <div class="field">
+          <%= gf.label :subject_id %>
+          <%= gf.text_field :subject_id %>
+        </div> 
+    <% end %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
