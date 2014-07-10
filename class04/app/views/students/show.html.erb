@@ -10,5 +10,10 @@
   <%= @student.university_id %>
 </p>
 
+<p>
+  <strong>Average Score:</strong>
+  <%= @student.average_student_score %>
+<p>
+
 <%= link_to 'Edit', edit_student_path(@student) %> |
 <%= link_to 'Back', students_path %>
