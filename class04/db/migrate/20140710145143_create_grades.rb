@@ -5,6 +5,9 @@ class CreateGrades < ActiveRecord::Migration
       t.float :score
       t.string :subject_id
 
+      # Student this grade belongs to.
+      t.integer :student_id
+
       t.timestamps
     end
   end
