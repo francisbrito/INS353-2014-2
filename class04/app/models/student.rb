@@ -11,4 +11,8 @@ class Student < ActiveRecord::Base
             scores.reduce {|p, n| (p + n) / scores.length}
         end
     end
+
+    def grades_attributes(attributes)
+        attributes
+    end
 end
