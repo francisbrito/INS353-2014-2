@@ -20,7 +20,7 @@
     <%= f.text_field :university_id %>
   </div>
   <div class="field_list">
-    <% fields_for :grade, @student.grades do |gf| %>
+    <%= f.fields_for :grades do |gf| %>
         <div class="field">
           <%= gf.label :subject_name %>
           <%= gf.text_field :subject_name %>
