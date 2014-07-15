@@ -4,7 +4,15 @@ class TeachersController < ApplicationController
   # GET /teachers
   # GET /teachers.json
   def index
-    @teachers = Teacher.all
+    @teachers = if params[:sort_by] 
+        if params[:sort_by] == 'active_subjects'
+            Teacher.all.sort_by {|t| t.active_subjects}
+        else
+            Teacher.order params[:sort_by]
+        end
+    else
+        Teacher.all
+    end
   end
 
   # GET /teachers/1
